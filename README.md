@@ -10,13 +10,11 @@ Rendez-vous à l'adresse suivante: [ici](https://devcenter.heroku.com/articles/h
 
 `heroku git:remote -a projectName`
 
-## Génération d'une clée SSH
+### Génération d'une clée SSH
 
-Dans un terminal Git bash:
+Dans un terminal Git bash: `ssh-keygen`
 
-`ssh-keygen`
-
-### Push sur heroku:
+### Push le projet sur heroku:
 
 `git add .`
 
