@@ -10,9 +10,11 @@ Rendez-vous à l'adresse suivante: [ici](https://devcenter.heroku.com/articles/h
 
 `heroku git:remote -a projectName`
 
-## Génération d'une clée SSH sur windows
+## Génération d'une clée SSH
 
+Dans un terminal Git bash:
 
+`ssh-keygen`
 
 ### Push sur heroku:
 
@@ -24,10 +26,10 @@ Rendez-vous à l'adresse suivante: [ici](https://devcenter.heroku.com/articles/h
 
 ### Mettre à jour la base de données distante
 
-*La première ligne crée le schéma SQL.*
+La première ligne crée le schéma SQL.
 
-heroku run php bin/console doctrine:schema:create
+`heroku run php bin/console doctrine:schema:create`
 
-*La deuxième ligne met à jour le schéma relationnel.*
+La deuxième ligne met à jour le schéma relationnel.
 
-heroku run php bin/console doctrine:schema:update --force
+`heroku run php bin/console doctrine:schema:update --force`
