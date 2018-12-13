@@ -6,26 +6,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Post;
+use AppBundle\Services\PostService;
 
 class BlogController extends Controller
 {
     /**
      * @Route("/", name="homepage", methods={"GET","HEAD"})
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, PostService $postService)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $posts = $postService->tenLastPost();
+        var_dump($posts);
+        return new Response('');
     }
 
     /**
-     * @Route("/post/{id}", name="post", requirements={"id"="\d+"}, methods={"GET","HEAD"})
+     * @Route("/post/{url_alias}", name="post", methods={"GET","HEAD"})
      */
-    public function postAction(int $id, Request $request)
+    public function postAction(string $url_alias, Request $request, PostService $postService)
     {
-        $phrase = "Le post numéro est $id";
-        return $this->render("blog/post/post.html.twig", array('id' => $id));
+        $post = $postService->findBy(array('urlAlias' => $url_alias));
+        var_dump($url_alias);
+        return $this->render("blog/post/post.html.twig", array('id' => $url_alias));
     }
 }
