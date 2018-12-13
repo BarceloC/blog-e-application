@@ -16,7 +16,6 @@ class BlogController extends Controller
      */
     public function indexAction(Request $request, PostService $postService)
     {
-        // replace this example code with whatever you need
         $posts = $postService->tenLastPost();
         var_dump($posts);
         return new Response('');
