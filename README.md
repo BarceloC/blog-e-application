@@ -1,13 +1,21 @@
 # Symfony Standard Edition
---------------------------
 
 ## Lignes de commandes utiles
------------------------------
+
+### Installer le client heroku
+
+Rendez-vous à l'adresse suivante: [ici](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+
 ### Définir un nouveau dépot distant
 
 `heroku git:remote -a projectName`
 
+## Génération d'une clée SSH sur windows
+
+
+
 ### Push sur heroku:
+
 `git add .`
 
 `git commit -m "message"`
@@ -22,4 +30,4 @@ heroku run php bin/console doctrine:schema:create
 
 *La deuxième ligne met à jour le schéma relationnel.*
 
-heroku run php app/console doctrine:schema:update --force
+heroku run php bin/console doctrine:schema:update --force
