@@ -14,9 +14,9 @@ class PostService
         $this->em = $entityManager->getRepository('AppBundle:Post');
     }
 
-    public function tenLastPost()
+    public function lastPost(int $page, int $limit)
     {
-        return $this->em->tenLastPost();
+        return $this->em->lastPost($page, $limit/2);
     }
 
     public function findBy(array $tab)

@@ -1,0 +1,26 @@
+{% extends "blog/template.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card green accent-4">
+                    <div class="card-content white-text">
+                        <span class="card-title">Well done !</span>
+                        <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                        {% if targetUrl %}
+                            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                            {% endif %}
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ path('homepage') }}">Home page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock body %}
