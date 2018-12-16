@@ -16,18 +16,27 @@ class BlogController extends Controller
      */
     public function indexAction(int $page = 1, Request $request, PostService $postService)
     {
-        if($page < 1)
-            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
         //nombre de posts à afficher
         $limit = 10;
-        $posts = $postService->lastPost($page, $limit);
-        $nbPages = ceil(count($posts)/($limit/2));
-        
-        return $this->render("blog/accueil/accueil.html.twig", array(
-            'posts' => $posts,
-            'nbPages' => $nbPages,
-            'page' => $page
-        ));
+        if($this->get('security.authorization_checker')->isGranted('ROLE_USER'))
+        {
+            if($page < 1)
+                throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+            
+            $posts = $postService->lastPost($page, $limit);
+            $nbPages = ceil(count($posts)/($limit/2));
+            
+            return $this->render("blog/accueil/accueil.html.twig", array(
+                'posts' => $posts,
+                'nbPages' => $nbPages,
+                'page' => $page
+            ));
+        }
+        else
+        {
+            $posts = $postService->lastPostVisitor($limit);
+            return $this->render("blog/accueil/accueil.html.twig", array('posts' => $posts));
+        }
     }
 
     /**
@@ -37,5 +46,28 @@ class BlogController extends Controller
     {
         $post = $postService->findBy(array('urlAlias' => $url_alias));
         return $this->render("blog/post/post.html.twig", array('id' => $url_alias));
+    }
+
+    /**
+     * @Route("sortedPost/", name="sortedPost", methods={"POST", "HEAD"})
+     */
+    public function sortedPostAction(Request $request, PostService $postService)
+    {
+        $selectChoice = $request->get("critere");
+        if($selectChoice === "titre")
+        {
+            $posts = $postService->findBy(array($selectChoice => $request->get($selectChoice)));
+            return $this->render("blog/post/sortedPost.html.twig", array('posts' => $posts));
+        }
+        else if($selectChoice === "published")
+        {
+            $date = new \Datetime($request->get($selectChoice));
+            $posts = $postService->findBy(array($selectChoice => $date));
+            return $this->render("blog/post/sortedPost.html.twig", array('posts' => $posts));
+        }
+        else
+        {
+            throw $this->createNotFoundException("Le critère recherché n'existe pas.");
+        }
     }
 }

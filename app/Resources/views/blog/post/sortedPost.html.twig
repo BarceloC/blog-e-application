@@ -1,9 +1,9 @@
 {% extends "blog/template.html.twig" %}
 
-{% block body %} 
+{% block body %}
 <main>
     <div class="container">
-        <p>{{ 'msg_test'|trans }}: {{ id }}</p>
+        {% include 'blog/post/displayPosts.html.twig' %}
     </div>
 </main>
 {% endblock %}

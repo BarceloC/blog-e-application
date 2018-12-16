@@ -1,0 +1,33 @@
+{% if posts is empty %}
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card red">
+            <div class="card-content white-text">
+                <span class="card-title">Aucun résultat...</span>
+                <p>Aucun résultat ne correspond à votre recherche.</p>
+                <p>Vous pouvez cliquez <a href="{{ path('homepage') }}">ici</a> pour retourner sur la page d'accueil.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+    {% for post in posts %}
+        <div class="col s12 m7">
+            <div class="card horizontal hoverable teal lighten-4">
+                <div class="card-image">
+                USER IMAGE
+                </div>
+                <div class="card-stacked">
+                <div class="card-content">
+                    <span class="card-title">{{ post.titre }}</span>
+                    <p>{{ post.content }}</p>
+                    <blockquote>Posté le {{ post.published|date('d/m/Y') }}</blockquote>
+                </div>
+                <div class="card-action">
+                    <a href="{{ path('post', {'url_alias': post.urlAlias}) }}">This is a link</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

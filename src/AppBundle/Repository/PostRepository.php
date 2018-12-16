@@ -23,4 +23,15 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
 
         return new Paginator($qb, true);
     }
+
+    public function lastPostVisitor(int $limit): Array
+    {
+        $qb = $this->createQueryBuilder('p')
+                    ->orderBy('p.published', 'DESC')
+                    ->setMaxResults($limit)
+                    ->getQuery();
+            
+
+        return $qb->getArrayResult();
+    }
 }

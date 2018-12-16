@@ -22,17 +22,58 @@
             <h4 class="center-align">This should be center aligned</h4>
         </div>
     </div>
-    <div class="nav-content cyan" id="fixedTab">
-        <div class="container">
-            <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="{{ path('homepage') }}">Accueil</a></li>
-                <li class="tab"><a href="#test2">Test 2</a></li>
-                <li class="tab"><a href="#test4">Profil</a></li>
-            </ul>
+    <div id="variable-fixed">
+        <div class="nav-content cyan" id="fixedTab">
+            <div class="container">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a href="{{ path('homepage') }}">Accueil</a></li>
+                    {% if app.user %}
+                        <li class="tab"><a href="#test4">Profil</a></li>
+                    {% endif %}
+                    <li class="tab">
+                        <a href="#search-modal" class="modal-trigger">Search</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
   </nav>
 </header>
+
+  <!-- Modal Structure -->
+  <div id="search-modal" class="modal">
+        <div class="modal-content">
+          <h4>Recherche</h4>
+          <p>Choisissez le critère sur lequel vous désirez faire votre recherche.</p>
+          <form action="{{ path('sortedPost') }}" method="POST">
+              <div class="row">
+                  <div class="input-field col s12">
+                      <select name="critere" id="critere">
+                            <option value="" disabled selected>Choisissez votre critères</option>
+                          <option value="titre">Titre</option>
+                          <option value="published">Date de publication</option>
+                      </select>
+                      <label for="critere">Liste des critères</label>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12" id="variable-input">
+                      
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col s2 offset-s10">
+                        <button type="submit" class="btn waves-effect waves-light cyan">Rechercher</button>
+                  </div>
+              </div>
+              <div class="row">
+                    <div class="col s2 offset-s10">
+                        <button class="modal-close waves-effect waves-green btn-flat modal-close red white-text">FERMER</button>
+                    </div>
+                </div>
+          </form>
+        </div>
+      </div>
 {% endblock %}
 
 {% block body %}
@@ -71,20 +112,44 @@
 <script>
 {{ parent() }}
 $(document).ready(function() {
+    /* Cette partie du code permet de coller la navbar en haut de la page quand on scroll */
     var positionTab = $(".nav-content").position().top;
     $(document).scroll(function() {
         var positionWindow = $(window).scrollTop();
         if(positionWindow >= positionTab)
         {
-            console.log("dans le if");
             $(".nav-content").addClass("sticky");
+            $("#variable-fixed").addClass("navbar-fixed");
         }
         else
         {
-            console.log("dans le else");
             $(".nav-content").removeClass("sticky");
+            $("#variable-fixed").removeClass("navbar-fixed");
         }
     });
+    /*************************************************************************************/
+
+    $('.modal').modal({ dismissible: true});
+    $('select').formSelect();
+
+    /* Cette partie du code gère la génération d'input dans le select */
+    $('#critere').change(function() {
+        $('#variable-input').empty();
+        var value = $('#critere option:selected').val();
+        if(value == 'titre')
+        {
+            var html = '<input id="first_name" type="text" name="titre">';
+            html += '<label for="first_name">First Name</label>';
+            $('#variable-input').append(html);
+        }
+        else if(value == 'published')
+        {
+            var html = '<input type="text" class="datepicker" name="published">';
+            $('#variable-input').append(html);
+            $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+        }
+    });
+    /*****************************************************************/
 });
 </script>
 {% endblock %}

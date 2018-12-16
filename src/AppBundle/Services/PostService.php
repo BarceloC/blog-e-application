@@ -19,6 +19,11 @@ class PostService
         return $this->em->lastPost($page, $limit/2);
     }
 
+    public function lastPostVisitor(int $limit)
+    {
+        return $this->em->lastPostVisitor($limit);
+    }
+
     public function findBy(array $tab)
     {
         return $this->em->findBy($tab);
