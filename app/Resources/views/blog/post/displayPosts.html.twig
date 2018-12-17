@@ -3,9 +3,13 @@
     <div class="col s12 m6">
         <div class="card red">
             <div class="card-content white-text">
-                <span class="card-title">Aucun résultat...</span>
-                <p>Aucun résultat ne correspond à votre recherche.</p>
-                <p>Vous pouvez cliquez <a href="{{ path('homepage') }}">ici</a> pour retourner sur la page d'accueil.</p>
+                <span class="card-title">{{ 'text.card.title.aucun'|trans }}</span>
+                <p>{{ 'text.card.paragraph.aucun'|trans }}</p>
+                <p>
+                    {{ 'text.card.paragraph.redirectHomePage'|trans }} 
+                    <a href="{{ path('homepage') }}">{{ 'lien.ici'|trans }}</a> 
+                    {{ 'text.card.paragraph.redirectHomePageSuite'|trans }}
+                </p>
             </div>
         </div>
     </div>
@@ -21,10 +25,10 @@
                 <div class="card-content">
                     <span class="card-title">{{ post.titre }}</span>
                     <p>{{ post.content }}</p>
-                    <blockquote>Posté le {{ post.published|date('d/m/Y') }}</blockquote>
+                    <blockquote>{{ 'text.blockquote.date'|trans }} {{ post.published|date('d/m/Y') }}</blockquote>
                 </div>
                 <div class="card-action">
-                    <a href="{{ path('post', {'url_alias': post.urlAlias}) }}">This is a link</a>
+                    <a href="{{ path('post', {'url_alias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.afficher'|trans }}</a>
                 </div>
                 </div>
             </div>

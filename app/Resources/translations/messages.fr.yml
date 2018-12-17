@@ -1,1 +1,66 @@
-msg_test: Ceci est le post numéro
+# Ces message sont la traduction de textes quelconque
+text:
+  titreOnglet: Le Blog Merveilleux
+
+  titreMenu: Cela doit être centré et aligné
+
+  paragraph:
+    recherchePost: Choisissez le critère sur lequel vous désirez faire votre recherche.
+
+  card:
+    paragraph:
+      aucun: Aucun résultat ne correspond à votre recherche.
+      redirectHomePage: Vous pouvez cliquez 
+      redirectHomePageSuite: pour retourner sur la page d'accueil.
+    title:
+      aucun: Aucun résultat
+
+  blockquote:
+    date: Posté le
+
+  titre:
+    recherchePost: Recherche
+    derniersPosts: 10 dernières publications
+
+# Ces messages sont contenus dans des liens <a href=""></a>
+lien:
+  connexion: Connexion
+  inscription: Inscription
+  deconnexion: Déconnexion
+  accueil: Accueil
+  profil: Profil
+  logo: Logo
+
+  post:
+    afficher: Afficher
+
+  ici: ici
+# Ces liens sont des modales
+  modal:
+    recherchePost: Recherche
+
+
+# Ces messages sont sur des select / option
+option:
+  disabled:
+    recherchePost: Choisissez votre critère
+
+  recherchePost:
+    titre: Titre
+    published: Date de publication
+
+# Ces messages sont des labels
+label:
+  select:
+    recherchePost: Liste des critères
+
+  input:
+    text:
+      prenom: Prénom
+
+# Ces messages sont sur des boutons
+btn:
+  submit:
+    rechercher: Rechercher
+
+  fermer: Fermer

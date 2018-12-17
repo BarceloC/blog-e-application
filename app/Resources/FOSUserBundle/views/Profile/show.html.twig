@@ -1,5 +1,9 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "blog/template.html.twig" %}
 
-{% block fos_user_content %}
-{% include "@FOSUser/Profile/show_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block body %}
+<main>
+    <div class="container">
+        {% include "@FOSUser/Profile/show_content.html.twig" %}
+    </div>
+</main>
+{% endblock body %}

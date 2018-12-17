@@ -1,1 +1,60 @@
-msg_test: This is the post number 
+# Ces message sont la traduction de textes quelconque
+text:
+  titreOnglet: The Wonderful Blog
+  titreMenu: This should be centered and aligned
+  paragraph:
+    recherchePost: Select the criterion on which you want to do the search.
+# Ces textes sont des titres (h1, h2, h3...)
+  titre:
+    recherchePost: Search
+    derniersPosts: 10 last posts
+
+  card:
+    title:
+      aucun: No result...
+    paragraph:
+      aucun: No results were found for your search.
+      redirectHomePage: You can click
+      redirectHomePageSuite: to back on the home page.
+  
+  blockquote:
+    date: Posted at
+
+# Ces messages sont contenus dans des liens <a href=""></a>
+lien:
+  connexion: Log in
+  inscription: Sign in
+  deconnexion: Log out
+  accueil: Home
+  profil: Profile
+  logo: Logo
+  ici: here
+  post:
+    afficher: Display
+# Ces liens sont des modales
+  modal:
+    recherchePost: Search
+
+
+# Ces messages sont sur des select / option
+option:
+  disabled:
+    recherchePost: Select your criterion
+  recherchePost:
+    titre: Title
+    published: Publication date
+
+# Ces messages sont des labels
+label:
+  select:
+    recherchePost: List of criteria
+  input:
+    text:
+      prenom: First name
+
+# Ces messages sont sur des boutons
+btn:
+  submit:
+    rechercher: Search
+
+  fermer: Close

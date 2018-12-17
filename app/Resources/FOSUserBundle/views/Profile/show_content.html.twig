@@ -1,6 +1,20 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card green accent-4">
+        <div class="card-content white-text">
+            <span class="card-title">Mise à jour réussie !</span>
+            <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+            <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        </div>
+        <div class="card-action">
+            <a href="{{ path('homepage') }}">Accueil</a>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
 <div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    
 </div>

@@ -6,32 +6,32 @@
   <nav class="nav-extended cyan lighten-2">
     <div class="container">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Logo</a>
+            <a href="#" class="brand-logo">{{ 'lien.logo'|trans }}</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 {% if not app.user %}
-                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                    <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                    <li><a href="{{ path('fos_user_security_login') }}">{{ 'lien.connexion'|trans }}</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">{{ 'lien.inscription'|trans }}</a></li>
                 {% elseif app.user %}
-                    <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}">{{ 'lien.deconnexion'|trans }}</a></li>
                 {% endif %}
             </ul>
         </div>
                 
         <div style="padding-top: 5em; padding-bottom: 5em;">
-            <h4 class="center-align">This should be center aligned</h4>
+            <h4 class="center-align">{{ 'text.titreMenu'|trans }}</h4>
         </div>
     </div>
     <div id="variable-fixed">
         <div class="nav-content cyan" id="fixedTab">
             <div class="container">
                 <ul class="tabs tabs-transparent">
-                    <li class="tab"><a href="{{ path('homepage') }}">Accueil</a></li>
+                    <li class="tab"><a href="{{ path('homepage') }}">{{ 'lien.accueil'|trans }}</a></li>
                     {% if app.user %}
-                        <li class="tab"><a href="#test4">Profil</a></li>
+                        <li class="tab"><a href="{{ path('fos_user_profile_edit') }}">{{ 'lien.profil'|trans }}</a></li>
                     {% endif %}
                     <li class="tab">
-                        <a href="#search-modal" class="modal-trigger">Search</a>
+                        <a href="#search-modal" class="modal-trigger">{{ 'lien.modal.recherchePost'|trans }}</a>
                     </li>
                 </ul>
             </div>
@@ -43,17 +43,17 @@
   <!-- Modal Structure -->
   <div id="search-modal" class="modal">
         <div class="modal-content">
-          <h4>Recherche</h4>
-          <p>Choisissez le critère sur lequel vous désirez faire votre recherche.</p>
+          <h4>{{ 'text.titre.recherchePost'|trans }}</h4>
+          <p>{{ 'text.paragraph.recherchePost'|trans }}</p>
           <form action="{{ path('sortedPost') }}" method="POST">
               <div class="row">
                   <div class="input-field col s12">
                       <select name="critere" id="critere">
-                            <option value="" disabled selected>Choisissez votre critères</option>
-                          <option value="titre">Titre</option>
-                          <option value="published">Date de publication</option>
+                            <option value="" disabled selected>{{ 'option.disabled.recherchePost'|trans }}</option>
+                          <option value="titre">{{ 'option.recherchePost.titre'|trans }}</option>
+                          <option value="published">{{ 'option.recherchePost.published'|trans }}</option>
                       </select>
-                      <label for="critere">Liste des critères</label>
+                      <label for="critere">{{ 'label.select.recherchePost'|trans }}</label>
                   </div>
               </div>
               <div class="row">
@@ -63,15 +63,15 @@
               </div>
               <div class="row">
                   <div class="col s2 offset-s10">
-                        <button type="submit" class="btn waves-effect waves-light cyan">Rechercher</button>
+                        <button type="submit" class="btn waves-effect waves-light cyan">{{ 'btn.submit.rechercher'|trans }}</button>
                   </div>
               </div>
-              <div class="row">
-                    <div class="col s2 offset-s10">
-                        <button class="modal-close waves-effect waves-green btn-flat modal-close red white-text">FERMER</button>
-                    </div>
-                </div>
           </form>
+            <div class="row">
+                <div class="col s2 offset-s10">
+                    <button type="button" class="modal-close waves-effect btn-flat modal-close red white-text" id="modal-close">{{ 'btn.fermer'|trans }}</button>
+                </div>
+            </div>
         </div>
       </div>
 {% endblock %}
@@ -82,30 +82,30 @@
 
 {% block footer %}
 <footer class="page-footer cyan lighten-2" id="footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright cyan">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
+    <div class="container">
+    <div class="row">
+        <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="footer-copyright cyan">
+    <div class="container">
+    © 2014 Copyright Text
+    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+    </div>
+</footer>
 {% endblock %}
 
 {% block javascripts %}
@@ -139,7 +139,7 @@ $(document).ready(function() {
         if(value == 'titre')
         {
             var html = '<input id="first_name" type="text" name="titre">';
-            html += '<label for="first_name">First Name</label>';
+            html += '<label for="first_name">'+"{{ 'label.input.text.prenom'|trans }}"+'</label>';
             $('#variable-input').append(html);
         }
         else if(value == 'published')
@@ -150,6 +150,10 @@ $(document).ready(function() {
         }
     });
     /*****************************************************************/
+
+    $('#modal-close').click(function() {
+        $('.modal').close();
+    });
 });
 </script>
 {% endblock %}

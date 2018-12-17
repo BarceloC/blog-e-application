@@ -70,4 +70,18 @@ class BlogController extends Controller
             throw $this->createNotFoundException("Le critère recherché n'existe pas.");
         }
     }
+
+    /**
+     * @Route("edit-langue/{langue}", name="editLangue", methods={"GET", "HEAD"})
+     */
+    public function change_locale(string $langue = 'en', Request $request)
+    {
+        //https://symfony.com/doc/3.4/session/locale_sticky_session.html
+        if($langue === 'fr' || $langue === 'en')
+        {
+            $request->setLocale($langue);
+        }
+        var_dump($request->getLocale());
+        return $this->redirectToRoute('homepage');
+    }
 }
