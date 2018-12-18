@@ -6,10 +6,15 @@
 
 body {
     display: flex;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     flex-direction: column;
 }
 
 main {
     flex: 1 0 auto;
+    /*height: 70vh !important;*/
+}
+
+#header-main {
+    min-height: 100vh;
 }

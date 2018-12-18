@@ -21,8 +21,11 @@
         </div>
     </div>
     <div class="row">
-        <div>
+        <div class="col s2">
             <button type="submit" class="waves-effect waves-light btn amber accent-4">{{ 'profile.edit.submit'|trans }}</button>
+        </div>
+        <div class="col s2">
+            <a href="{{ path('fos_user_change_password') }}" class="waves-effect waves-light btn red">{{ 'lien.mdp.edit'|trans }}</a>
         </div>
     </div>
 {{ form_end(form) }}
