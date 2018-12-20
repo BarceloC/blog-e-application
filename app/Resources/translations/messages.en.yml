@@ -31,6 +31,8 @@ lien:
   ici: here
   post:
     afficher: Display
+    edit: Edit
+    delete: Delete
 # Ces liens sont des modales
   modal:
     recherchePost: Search
@@ -51,10 +53,15 @@ label:
   input:
     text:
       prenom: First name
+      titre: Title
+  
+  textarea:
+    content: Content
 
 # Ces messages sont sur des boutons
 btn:
   submit:
     rechercher: Search
+    enregistrer: Save
 
   fermer: Close

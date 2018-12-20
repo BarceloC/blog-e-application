@@ -33,6 +33,8 @@ lien:
 
   post:
     afficher: Afficher
+    edit: Modifier
+    delete: Supprimer
 
   ici: ici
 # Ces liens sont des modales
@@ -57,10 +59,15 @@ label:
   input:
     text:
       prenom: Prénom
+      titre: Titre
+  
+  textarea:
+    content: Contenu
 
 # Ces messages sont sur des boutons
 btn:
   submit:
     rechercher: Rechercher
+    enregistrer: Enregistrer
 
   fermer: Fermer

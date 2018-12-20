@@ -29,6 +29,8 @@
                 </div>
                 <div class="card-action">
                     <a href="{{ path('post', {'url_alias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.afficher'|trans }}</a>
+                    <a href="{{ path('editPost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.edit'|trans }}</a>
+                    <a href="{{ path('deletePost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.delete'|trans }}</a>
                 </div>
                 </div>
             </div>
