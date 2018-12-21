@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Post;
 use AppBundle\Services\PostService;
+use AppBundle\Entity\User;
 
 class BlogController extends Controller
 {
@@ -37,5 +38,16 @@ class BlogController extends Controller
             $posts = $postService->lastPostVisitor($limit);
             return $this->render("blog/accueil/accueil.html.twig", array('posts' => $posts));
         }
+    }
+
+    /**
+     * @Route("/debug", name="debug")
+     */
+    public function debug()
+    {
+        $repo = $this->getDoctrine()->getManager()->getRepository(User::class);
+        $users = $repo->findAll();
+        var_dump($users);
+        return new Response("");
     }
 }
