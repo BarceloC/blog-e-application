@@ -35,3 +35,8 @@ La première ligne crée le schéma SQL.
 La deuxième ligne met à jour le schéma relationnel.
 
 `heroku run php bin/console doctrine:schema:update --force`
+
+
+"incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
