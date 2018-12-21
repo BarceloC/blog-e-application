@@ -7,8 +7,6 @@ parameters:
     database_password: null
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    #desousadamien30@gmail.com
     mailer_user: desousadamien30@gmail.com
-    #mdp_user
     mailer_password: mdp
     secret: ThisTokenIsNotSoSecretChangeIt
