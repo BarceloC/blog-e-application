@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use AppBundle\Entity\Post;
 
 /**
  * PostRepository
@@ -33,5 +34,11 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             
 
         return $qb->getArrayResult();
+    }
+
+    public function isUrlAliasUnique(string $urlAlias)
+    {
+        $is_unique = $this->findBy(array('urlAlias' => $urlAlias));
+        return count($is_unique) === 0;
     }
 }

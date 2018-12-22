@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Post;
 use AppBundle\Services\PostService;
+use AppBundle\Entity\User;
 
 class BlogController extends Controller
 {
@@ -40,48 +41,13 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("post/{url_alias}", name="post", methods={"GET","HEAD"})
+     * @Route("/debug", name="debug")
      */
-    public function postAction(string $url_alias, Request $request, PostService $postService)
+    public function debug()
     {
-        $post = $postService->findBy(array('urlAlias' => $url_alias));
-        return $this->render("blog/post/post.html.twig", array('id' => $url_alias));
-    }
-
-    /**
-     * @Route("sortedPost/", name="sortedPost", methods={"POST", "HEAD"})
-     */
-    public function sortedPostAction(Request $request, PostService $postService)
-    {
-        $selectChoice = $request->get("critere");
-        if($selectChoice === "titre")
-        {
-            $posts = $postService->findBy(array($selectChoice => $request->get($selectChoice)));
-            return $this->render("blog/post/sortedPost.html.twig", array('posts' => $posts));
-        }
-        else if($selectChoice === "published")
-        {
-            $date = new \Datetime($request->get($selectChoice));
-            $posts = $postService->findBy(array($selectChoice => $date));
-            return $this->render("blog/post/sortedPost.html.twig", array('posts' => $posts));
-        }
-        else
-        {
-            throw $this->createNotFoundException("Le critère recherché n'existe pas.");
-        }
-    }
-
-    /**
-     * @Route("edit-langue/{langue}", name="editLangue", methods={"GET", "HEAD"})
-     */
-    public function change_locale(string $langue = 'en', Request $request)
-    {
-        //https://symfony.com/doc/3.4/session/locale_sticky_session.html
-        if($langue === 'fr' || $langue === 'en')
-        {
-            $request->setLocale($langue);
-        }
-        var_dump($request->getLocale());
-        return $this->redirectToRoute('homepage');
+        $repo = $this->getDoctrine()->getManager()->getRepository(User::class);
+        $users = $repo->findAll();
+        var_dump($users);
+        return new Response("");
     }
 }
