@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Post;
 use AppBundle\Services\PostService;
 use AppBundle\Entity\User;
+use Doctrine\DBAL\Driver\Connection;
 
 class BlogController extends Controller
 {
@@ -43,11 +44,13 @@ class BlogController extends Controller
     /**
      * @Route("/debug", name="debug")
      */
-    public function debug()
+    public function debug(Connection $connection)
     {
-        $repo = $this->getDoctrine()->getManager()->getRepository(User::class);
+        /*$repo = $this->getDoctrine()->getManager()->getRepository(User::class);
         $users = $repo->findAll();
-        var_dump($users);
+        var_dump($users);*/
+        $data = $connection->fetchAll('SELECT * FROM user');
+        var_dump($data);
         return new Response("");
     }
 }
