@@ -51,18 +51,18 @@ class CrudController extends Controller
     public function newAction(Request $request, PostService $postService)
     {
         $post = new Post();
-        /*$form = $this->createFormBuilder($post)
-                     ->add('titre', TextType::class, array('label' => 'label.input.text.titre'))
-                     ->add('content', TextareaType::class, array('label' => 'label.textarea.content'))
-                     ->getForm();*/
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
+        //message flash
+        $flashbag = $this->get('session')->getFlashBag();
 
         if($form->isSubmitted() && $form->isValid())
         {
             $post = $form->getData();
             //insert post
             $postService->newPost($post);
+            //on prévient l'utilisateur que son post à bien été créé
+            $flashbag->add("success", "text.card.paragraph.post.success");
             //redirection
             return $this->redirectToRoute('homepage');
         }

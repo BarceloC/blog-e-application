@@ -14,6 +14,12 @@
                         <p>{{ post.content }}</p>
                         <blockquote>{{ 'text.blockquote.date'|trans }} {{ post.published|date('d/m/Y') }}</blockquote>
                     </div>
+                    {% if app.user %}
+                        <div class="card-action">
+                                <a href="{{ path('editPost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.edit'|trans }}</a>
+                                <a href="{{ path('deletePost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.delete'|trans }}</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

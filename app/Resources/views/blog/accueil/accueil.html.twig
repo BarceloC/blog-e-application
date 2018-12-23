@@ -20,6 +20,7 @@
                         {% endfor %}
                     </ul>
                 </div>
+                {% include "blog/flash_messages/display.html.twig" %}
             </div>
         {% else %}
             {% include 'blog/post/displayPosts.html.twig' %}

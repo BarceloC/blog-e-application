@@ -12,8 +12,11 @@ text:
       aucun: Aucun résultat ne correspond à votre recherche.
       redirectHomePage: Vous pouvez cliquez 
       redirectHomePageSuite: pour retourner sur la page d'accueil.
+      post:
+        success: Votre post a été créé avec succès !
     title:
       aucun: Aucun résultat
+      success: C'est une réussite !
 
   blockquote:
     date: Posté le
@@ -30,11 +33,14 @@ lien:
   accueil: Accueil
   profil: Profil
   logo: Logo
+  mdp:
+    edit: Mot de passe
 
   post:
     afficher: Afficher
     edit: Modifier
     delete: Supprimer
+    create: Nouveau post
 
   ici: ici
 # Ces liens sont des modales

@@ -11,11 +11,14 @@ text:
 
   card:
     title:
-      aucun: No result...
+      aucun: No results...
+      success: Well done !
     paragraph:
       aucun: No results were found for your search.
       redirectHomePage: You can click
       redirectHomePageSuite: to back on the home page.
+      post:
+        success: Your post was successfully created !
   
   blockquote:
     date: Posted at
@@ -29,10 +32,13 @@ lien:
   profil: Profile
   logo: Logo
   ici: here
+  mdp:
+    edit: Password
   post:
     afficher: Display
     edit: Edit
     delete: Delete
+    create: Create post
 # Ces liens sont des modales
   modal:
     recherchePost: Search
