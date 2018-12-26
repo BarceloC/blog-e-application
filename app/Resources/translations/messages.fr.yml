@@ -6,6 +6,7 @@ text:
 
   paragraph:
     recherchePost: Choisissez le critère sur lequel vous désirez faire votre recherche.
+    footer: ce projet a été entièrement réalisé avec les frameworks Symfony 3.4 et Materialize.
 
   card:
     paragraph:
@@ -24,6 +25,9 @@ text:
   titre:
     recherchePost: Recherche
     derniersPosts: 10 dernières publications
+    mesPosts: Mes publications
+    footer: Projet Symfony
+    encadrement: Encadrement
 
 # Ces messages sont contenus dans des liens <a href=""></a>
 lien:
@@ -35,6 +39,11 @@ lien:
   logo: Logo
   mdp:
     edit: Mot de passe
+  ecole: Faculté des Sciences de Montpellier
+  gender: M.
+  professeur: Professeur
+  intervenant: Intervenant
+  ue: Projet HMIN302
 
   post:
     afficher: Afficher
@@ -75,5 +84,10 @@ btn:
   submit:
     rechercher: Rechercher
     enregistrer: Enregistrer
+    update: Mettre à jour
 
   fermer: Fermer
+
+input:
+  file:
+    profile_image: Image

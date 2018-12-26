@@ -5,27 +5,54 @@
         <div  class="input-field col s6">
             {{ form_label(form.username) }}
             {{ form_widget(form.username) }}
-            {{ form_errors(form.username) }}
+            <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.username) }}</span>
         </div>
         <div  class="input-field col s6">
             {{ form_label(form.email) }}
             {{ form_widget(form.email) }}
-            {{ form_errors(form.email) }}
+            <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.email) }}</span>
         </div>
+    </div>
+    <div class="row">
+        <div class="col s3">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span class="text-white">{{ 'input.file.profile_image'|trans }}</span>
+                    {{ form_widget(form.imageProfil) }}
+                </div>
+                <div class="file-path-wrapper">
+                    <input type="text" class="file-path validate">
+                </div>
+                <span class="helper-text">{{ 'text.span.imageInfo'|trans }}</span>
+                <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.imageProfil) }}</span>
+            </div>
+        </div>
+        {% if app.user.imageProfil is not null %}
+            <div class="col">
+                <figure>
+                    <img src="{{ uploaded_file_path ~ app.user.imageProfil }}" alt="Aperçu" class="responsive-img z-depth-4">
+                    <figcaption>{{ 'text.figcaption.image'|trans }}</figcaption>
+                </figure>
+            </div>
+        {% endif %}
     </div>
     <div class="row">
         <div class="input-field col s6">
             {{ form_label(form.current_password) }}
             {{ form_widget(form.current_password) }}
-            {{ form_errors(form.current_password) }}
+            <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.current_password) }}</span>
         </div>
     </div>
     <div class="row">
         <div class="col s2">
-            <button type="submit" class="waves-effect waves-light btn amber accent-4">{{ 'profile.edit.submit'|trans }}</button>
+            <button type="submit" class="waves-effect waves-light btn amber accent-4">
+                    <i class="material-icons left">edit</i>{{ 'profile.edit.submit'|trans }}
+            </button>
         </div>
         <div class="col s2">
-            <a href="{{ path('fos_user_change_password') }}" class="waves-effect waves-light btn red">{{ 'lien.mdp.edit'|trans }}</a>
+            <a href="{{ path('fos_user_change_password') }}" class="waves-effect waves-light btn red">
+                <i class="material-icons left">arrow_forward</i>{{ 'lien.mdp.edit'|trans }}
+            </a>
         </div>
     </div>
 {{ form_end(form) }}

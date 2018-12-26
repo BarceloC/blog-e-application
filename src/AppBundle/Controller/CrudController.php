@@ -51,6 +51,7 @@ class CrudController extends Controller
     public function newAction(Request $request, PostService $postService)
     {
         $post = new Post();
+        $user = $this->getUser();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
         //message flash
@@ -60,7 +61,7 @@ class CrudController extends Controller
         {
             $post = $form->getData();
             //insert post
-            $postService->newPost($post);
+            $postService->newPost($post, $user);
             //on prévient l'utilisateur que son post à bien été créé
             $flashbag->add("success", "text.card.paragraph.post.success");
             //redirection

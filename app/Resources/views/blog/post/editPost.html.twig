@@ -8,18 +8,18 @@
                 <div class="input-field">
                     {{ form_label(form.titre) }}
                     {{ form_widget(form.titre, {'attr': {'value': post.titre}}) }}
-                    {{ form_errors(form.titre) }}
+                    <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.titre) }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field">
                     {{ form_label(form.content) }}
                     {{ form_widget(form.content, {'attr': {'class': 'materialize-textarea'}}) }}
-                    {{ form_errors(form.content) }}
+                    <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.content) }}</span>
                 </div>
             </div>
-            <button class="btn-large green accent-4" type="submit">
-                {{'btn.submit.enregistrer'|trans }}
+            <button class="btn-large amber accent-4" type="submit">
+                <i class="material-icons left">edit</i>{{'btn.submit.update'|trans }}
             </button>
         {{ form_end(form) }}
     </div>

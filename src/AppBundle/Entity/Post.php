@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -49,6 +50,28 @@ class Post
      */
     private $published;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+
+    /**
+     * Get user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * Get id

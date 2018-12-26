@@ -5,18 +5,19 @@ namespace AppBundle\Services;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\Post;
+use AppBundle\Entity\User;
 use AppBundle\Services\UrlAliasService;
 
 class PostService
 {
     protected $em;
-    protected $urlAlisService;
+    protected $urlAliasService;
     protected $repository;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlAliasService $urlAlisService)
+    public function __construct(EntityManagerInterface $entityManager, UrlAliasService $urlAliasService)
     {
         $this->em = $entityManager;
-        $this->urlAlisService = $urlAlisService;
+        $this->urlAliasService = $urlAliasService;
         $this->repository = $entityManager->getRepository('AppBundle:Post');
     }
 
@@ -35,14 +36,16 @@ class PostService
         return $this->repository->findBy($tab);
     }
 
-    public function newPost(Post $post)
+    public function newPost(Post $post, User $user)
     {
         $post->setPublished(new \Datetime());
         $post->setUrlAlias($post->getTitre());
+        $post->setUser($user);
+        $user->setPosts($post);
         do
         {
-            $post->setUrlAlias($this->urlAlisService->create($post->getUrlAlias()));
-        }while(!$this->isUrlAliasUnique($this->urlAlisService->create($post->getUrlAlias())));
+            $post->setUrlAlias($this->urlAliasService->create($post->getUrlAlias()));
+        }while(!$this->isUrlAliasUnique($post->getUrlAlias()));
         $this->em->persist($post);
         $this->em->flush();
     }

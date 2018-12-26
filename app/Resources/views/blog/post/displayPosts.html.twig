@@ -18,22 +18,26 @@
     {% for post in posts %}
         <div class="col s12 m7">
             <div class="card horizontal hoverable teal lighten-4">
-                <div class="card-image">
-                USER IMAGE
-                </div>
+                {% if post.user.imageProfil is not null %}
+                    <div class="card-image">
+                        <img src="{{ uploaded_file_path ~ post.user.imageProfil }}" alt="">
+                    </div>
+                {% else %}
+                    <p>{{ post.user.username }}</p>
+                {% endif %}
                 <div class="card-stacked">
-                <div class="card-content">
-                    <span class="card-title">{{ post.titre }}</span>
-                    <p>{{ post.content }}</p>
-                    <blockquote>{{ 'text.blockquote.date'|trans }} {{ post.published|date('d/m/Y') }}</blockquote>
-                </div>
-                <div class="card-action">
-                    <a href="{{ path('post', {'url_alias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.afficher'|trans }}</a>
-                    {% if app.user %}
-                        <a href="{{ path('editPost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.edit'|trans }}</a>
-                        <a href="{{ path('deletePost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.delete'|trans }}</a>
-                    {% endif %}
-                </div>
+                    <div class="card-content">
+                        <span class="card-title">{{ post.titre }}</span>
+                        <p>{{ post.content }}</p>
+                        <blockquote>{{ 'text.blockquote.date'|trans }} {{ post.published|date('d/m/Y') }}</blockquote>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ path('post', {'url_alias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.afficher'|trans }}</a>
+                        {% if app.user and app.user == post.user %}
+                            <a href="{{ path('editPost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.edit'|trans }}</a>
+                            <a href="{{ path('deletePost', {'urlAlias': post.urlAlias}) }}" class="orange-text darken-4">{{ 'lien.post.delete'|trans }}</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

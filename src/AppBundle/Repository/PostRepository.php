@@ -30,6 +30,8 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('p')
                     ->orderBy('p.published', 'DESC')
                     ->setMaxResults($limit)
+                    ->join('p.user', 'u')
+                    ->addSelect('u')
                     ->getQuery();
             
 

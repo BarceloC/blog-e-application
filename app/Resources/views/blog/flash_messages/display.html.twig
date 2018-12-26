@@ -1,17 +1,18 @@
 {% for label, messages in app.flashes %}
     {% for message in messages %}
-        {% if label == 'success' %}
+        
         <div class="row">
-            <div class="col s12 m6">
-              <div class="card green accent-4">
-                <div class="card-content white-text">
-                  <p>{{ message|trans }}</p>
-                </div>
+            <div class="col s6 m6">
+              {% if label == 'success' %}
+                <div class="card green accent-4">
+                  <div class="card-content white-text">
+                    <p><i class="material-icons left">check</i>{{ message|trans }}</p>
+                  </div>
+              {% elseif label == 'error' %}
+              {% elseif label == 'warning' %}
+              {% endif %}
               </div>
             </div>
           </div>
-        {% elseif label == 'error' %}
-        {% elseif label == 'warning' %}
-        {% endif %}
     {% endfor %}
 {% endfor %}

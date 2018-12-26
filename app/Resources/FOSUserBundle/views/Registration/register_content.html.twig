@@ -7,19 +7,19 @@
             <div class="input-field col s6">
                 {{ form_label(form.username) }}
                 {{ form_widget(form.username) }}
-                {{ form_errors(form.username) }}
+                <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.username) }}</span>
             </div>
             <div class="input-field col s6">
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email) }}
-                {{ form_errors(form.email) }}
+                <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.email) }}</span>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
                 {{ form_label(form.plainPassword.first) }}
                 {{ form_widget(form.plainPassword.first) }}
-                {{ form_errors(form.plainPassword.first) }}
+                <span class="helper-text red-text" data-error="wrong">{{ form_errors(form.plainPassword.first) }}</span>
             </div>
             <div class="input-field col s6">
                 {{ form_label(form.plainPassword.second) }}
@@ -29,7 +29,7 @@
         {{ form_rest(form) }}
         <div>
             <button class="btn-large waves-effect waves-light green accent-4" type="submit">
-                {{ 'registration.submit'|trans }}
+                <i class="material-icons left">send</i>{{ 'registration.submit'|trans }}
             </button>
         </div>
         {{ form_end(form) }}

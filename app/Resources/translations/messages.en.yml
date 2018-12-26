@@ -4,10 +4,14 @@ text:
   titreMenu: This should be centered and aligned
   paragraph:
     recherchePost: Select the criterion on which you want to do the search.
+    footer: This project was entirely realized with the Symfony 3.4 and Materialize frameworks.
 # Ces textes sont des titres (h1, h2, h3...)
   titre:
     recherchePost: Search
     derniersPosts: 10 last posts
+    mesPosts: My posts
+    footer: Symfony project
+    encadrement: School supervision
 
   card:
     title:
@@ -34,6 +38,12 @@ lien:
   ici: here
   mdp:
     edit: Password
+  ecole: Faculty of Sciences of Montpellier
+  gender: Mr.
+  professeur: Teacher
+  intervenant: Contributor
+  ue: HMIN302 project
+
   post:
     afficher: Display
     edit: Edit
@@ -69,5 +79,10 @@ btn:
   submit:
     rechercher: Search
     enregistrer: Save
+    update: Update
 
   fermer: Close
+
+input:
+  file:
+    profile_image: Picture

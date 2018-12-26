@@ -96,11 +96,22 @@ form:
 
 # Mes traductions personnelles
 text:
-  card:
-    title:
-      successUpdate: Successful update!
+    card:
+        title:
+            successUpdate: Successful update!
+    figcaption:
+        image: Current cover photo
+    
+    span:
+        imageInfo: 'Accepted formats: JPG, PNG, GIF'
+
+
 
 lien:
   accueil: Home page
   mdp:
     edit: Password
+
+input:
+    file:
+        profile_image: Picture

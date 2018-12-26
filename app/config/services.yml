@@ -28,6 +28,21 @@ services:
         resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+    
+
+    app.form.user.edit:
+        class: AppBundle\Form\ProfileEditType
+        tags:
+            - { name: form.type, alias: app_user_edit }
+    
+    AppBundle\EventListener\ImageUploadListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+
+    AppBundle\Services\FileUploader:
+        arguments:
+            $targetDirectory: '%images_directory%'
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

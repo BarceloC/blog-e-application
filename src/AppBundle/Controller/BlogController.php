@@ -20,13 +20,17 @@ class BlogController extends Controller
     {
         //nombre de posts à afficher
         $limit = 10;
+        $perPage = 5;
+        if($page > $limit/$perPage)
+            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+        
         if($this->get('security.authorization_checker')->isGranted('ROLE_USER'))
         {
             if($page < 1)
                 throw $this->createNotFoundException("La page ".$page." n'existe pas.");
             
             $posts = $postService->lastPost($page, $limit);
-            $nbPages = ceil(count($posts)/($limit/2));
+            $nbPages = (ceil(count($posts)/$perPage) > 2) ? 2 : ceil(count($posts)/$perPage);
             
             return $this->render("blog/accueil/accueil.html.twig", array(
                 'posts' => $posts,
@@ -44,13 +48,9 @@ class BlogController extends Controller
     /**
      * @Route("/debug", name="debug")
      */
-    public function debug(Connection $connection)
+    public function debug(PostService $postService)
     {
-        /*$repo = $this->getDoctrine()->getManager()->getRepository(User::class);
-        $users = $repo->findAll();
-        var_dump($users);*/
-        $data = $connection->fetchAll('SELECT * FROM user');
-        var_dump($data);
+        dump($postService->newPost(new Post(), new User()));
         return new Response("");
     }
 }
