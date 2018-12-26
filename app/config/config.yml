@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: fr
     images_directory: '%kernel.project_dir%/web/uploads/images'
-    url_path: 'http://localhost/blog-e-application'
+    url_path: 'http://localhost/blog-e-application/web'
 
 framework:
     #esi: ~
@@ -38,7 +38,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-        uploaded_file_path: '%url_path%/web/uploads/images/'
+        uploaded_file_path: '%url_path%/uploads/images/'
 
 # Doctrine Configuration
 doctrine:
