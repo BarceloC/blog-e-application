@@ -28,7 +28,7 @@ En plus du travail demandé nous avons réalisé les fonctionnalités suivantes 
 * Nous avons créé un service qui permet de générer des url-alias unique.
 * Pour pouvoir associer un utilisateur à un post nous avons utilisé une relation bidirectionnelle entre un Post et un User.
 
-## Potientiel problème
+## Potentiel problème
 
 Nous stockons les images directement sur Heroku. De ce fait, il est possible qu'un post n'ai ni d'image, ni de nom d'utilisateur lors de son affichage.
 
