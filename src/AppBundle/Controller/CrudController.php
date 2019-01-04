@@ -25,7 +25,7 @@ class CrudController extends Controller
         }
         else
         {
-            //404
+            throw $this->createNotFoundException("Le post $url_alias n'existe pas.");
         }
     }
 
