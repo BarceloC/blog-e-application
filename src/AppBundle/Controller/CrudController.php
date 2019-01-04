@@ -18,8 +18,15 @@ class CrudController extends Controller
     public function postAction(string $url_alias, Request $request, PostService $postService)
     {
         $post = $postService->findBy(array('urlAlias' => $url_alias));
-        $post = $post[0];
-        return $this->render("blog/post/post.html.twig", array('post' => $post));
+        if(count($post) > 0)
+        {
+            $post = $post[0];
+            return $this->render("blog/post/post.html.twig", array('post' => $post));
+        }
+        else
+        {
+            //404
+        }
     }
 
     /**
